@@ -1,0 +1,39 @@
+body {
+    background-color: #000;
+    color: #fff;
+}
+
+.card {
+    background-color: #1a1a1a;
+    border: none;
+}
+
+.card p {
+    font-size: 14px;
+}
+
+.btn-success {
+    background-color: #7aff64;
+    border-color: #7aff64;
+}
+
+.btn-outline-light {
+    border-color: #fff;
+}
+
+h5 {
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover {
+    color: #7aff64;
+}
+
+input::placeholder {
+    color: #ccc;
+}
