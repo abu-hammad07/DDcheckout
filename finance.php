@@ -2,46 +2,66 @@
 require 'database_connection.php';
 
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+    // Sanitize input to prevent SQL injection
+    $id = intval($_GET['id']);
+
+    // Prepare SQL statement to prevent SQL injection
     $sql = "SELECT event_calendar.*, event_customer.* 
             FROM event_calendar 
             LEFT JOIN event_customer 
             ON event_calendar.customer_id = event_customer.id 
-            WHERE event_calendar.event_id = $id";
+            WHERE event_calendar.event_id = ?";
 
-    $result = mysqli_query($con, $sql);
+    // Use prepared statements
+    $stmt = mysqli_prepare($con, $sql);
+    mysqli_stmt_bind_param($stmt, 'i', $id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
 
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
 
         // Ensure $price is numeric
-        if (is_numeric($row['price'])) {
-            $price = floatval($row['price']); // Convert to a float or int if needed
-            $created_at = $row['created_at']; // Fetch created_at time
+        if (isset($row['price']) && is_numeric($row['price'])) {
+            $price = floatval($row['price']); // Convert to a float
 
-            // Get current time and calculate the time difference
-            $current_time = new DateTime('now', new DateTimeZone('Asia/Karachi'));
-            $event_time = new DateTime($created_at, new DateTimeZone('Asia/Karachi'));
+            // Fetch created_at time and ensure it's valid
+            if (isset($row['created_at'])) {
+                $created_at = $row['created_at'];
 
-            // Calculate the time difference in hours
-            $time_difference = $event_time->diff($current_time)->h;
-            $time_difference_minutes = $event_time->diff($current_time)->i;
+                // Get current time and calculate the time difference
+                $current_time = new DateTime('now', new DateTimeZone('Asia/Karachi'));
+                $event_time = new DateTime($created_at, new DateTimeZone('Asia/Karachi'));
 
+                // Calculate the time difference
+                $time_difference = $event_time->diff($current_time);
+                $hours_difference = $time_difference->h;
+                $minutes_difference = $time_difference->i;
 
-            // Apply $100 discount if within 2 hours
-            if ($time_difference <= 2 && $time_difference_minutes == 0) {
-                $price -= 100;
-                // Ensure price doesn't go below zero
-                if ($price < 0) {
-                    $price = 0;
+                // Apply $100 discount if within 2 hours
+                if ($hours_difference < 2 || ($hours_difference == 2 && $minutes_difference == 0)) {
+                    $price -= 100;
+                    // Ensure price doesn't go below zero
+                    $price = max(0, $price);
                 }
+            } else {
+                echo "Invalid event time data.";
+                exit;
             }
         } else {
             echo "Invalid price data.";
             exit;
         }
+    } else {
+        echo "No event found.";
+        exit;
     }
+} else {
+    echo "No event ID provided.";
+    exit;
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,8 +99,10 @@ if (isset($_GET['id'])) {
                     <div class="col-md-12">
                         <label class="form-label">Payment amount (in dollars or cents, <span class="text-danger">if
                                 $10.00 type 1000</span>)</label>
+                        <!-- HTML Part -->
                         <input type="number" class="form-control" name="amount" required readonly
-                            value="<?php echo $price * 100; ?>">
+                            value="<?php echo isset($price) ? $price * 100 : 0; ?>"> <!-- Output price in pence -->
+
                         <div class="valid-feedback">Looks good!</div>
                     </div>
                     <div class="col-md-12">

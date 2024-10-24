@@ -154,39 +154,6 @@ if (isset($_GET['id'])) {
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
         </script>
 
-    <!-- <script>
-        // Set the countdown time for 2 hours (in milliseconds)
-        var countdownTime = 2 * 60 * 60 * 1000;
-        var endTime = new Date().getTime() + countdownTime;
-
-        function updateTimer() {
-            var now = new Date().getTime();
-            var distance = endTime - now;
-
-            // Time calculations for days, hours, minutes and seconds
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Output the result in the respective elements
-            document.getElementById("days").innerHTML = ('0' + days).slice(-2);
-            document.getElementById("hours").innerHTML = ('0' + hours).slice(-2);
-            document.getElementById("minutes").innerHTML = ('0' + minutes).slice(-2);
-            document.getElementById("seconds").innerHTML = ('0' + seconds).slice(-2);
-
-            // If the countdown is finished, stop the timer and alert
-            if (distance < 0) {
-                clearInterval(timerInterval);
-                document.querySelector('.timer-box').innerHTML = "Time is up!";
-            }
-        }
-
-        // Update the timer every 1 second
-        var timerInterval = setInterval(updateTimer, 1000);
-    </script> -->
-
-
     <script>
         // PHP will echo the remaining time in milliseconds (from server-side PHP)
         var countdownTime = <?php echo $time_difference_in_seconds * 1000; ?>;

@@ -21,7 +21,8 @@ if (isset($_GET['page'])) {
 function index()
 {
     // Redirect to the home.php page
-    header("Location: dashboard.php?title=x1 Social Media and Content&description=Boost your online presence with tailored social media strategies and engaging content that connects with your audience. We help your brand shine across all platforms.&price=1153");
+    header("Location: dashboard.php?price={$_GET['price']}");
+    // header("Location: https://decensatdesign.com");
     exit;
 }
 
