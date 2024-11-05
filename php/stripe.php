@@ -60,8 +60,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         CURLOPT_CUSTOMREQUEST => 'POST',
         CURLOPT_POSTFIELDS => json_encode($data),
         CURLOPT_HTTPHEADER => array(
-            'Authorization: Bearer YOUR_API_TOKEN', // Replace with your API token
-            'Content-Type: application/json'
+            'Authorization: Bearer Y4VQKJ3-6ERMPED-K6XXRQT-MFGV6MP', // Replace with your API token
+            'Content-Type: application/json',
+            'X-Network: base' // Add your required network here, like "base", "Ethereum", etc.
         ),
     ));
 
