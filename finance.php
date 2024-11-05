@@ -91,30 +91,37 @@ if (isset($_GET['id'])) {
             <div class="col-md-6 offset-md-3 card mt-3">
                 <form class="row g-3 needs-validation card-body" novalidate action="index2.php?page=create-payment"
                     method="POST">
+                    <?php
+                    $eventId = uniqid('event_', true); // Example of generating a unique ID
+                    ?>
+                    <input type="hidden" name="event_id" value="<?php echo $eventId; ?>">
                     <div class="col-md-12">
                         <label class="form-label">Email address</label>
                         <input type="email" class="form-control" name="email" required>
                         <div class="valid-feedback">Looks good!</div>
                     </div>
                     <div class="col-md-12">
-                        <label class="form-label">Payment amount (in dollars or cents, <span class="text-danger">if
-                                $10.00 type 1000</span>)</label>
+                        <!-- <label class="form-label">Payment amount (in dollars or cents, <span class="text-danger">if
+                                $10.00 type 1000</span>)</label> -->
+                        <label class="form-label">Payment amount</label>
                         <!-- HTML Part -->
+                        <!-- <input type="number" class="form-control" name="amount" required readonly
+                            value="<?php //echo isset($price) ? $price * 100 : 0; ?>">  -->
                         <input type="number" class="form-control" name="amount" required readonly
-                            value="<?php echo isset($price) ? $price * 100 : 0; ?>"> <!-- Output price in pence -->
+                            value="<?php echo $price ?>"> <!-- Output price in pence -->
 
                         <div class="valid-feedback">Looks good!</div>
                     </div>
-                    <div class="col-md-12">
+                    <!-- <div class="col-md-12">
                         <label class="form-label">Crypto wallet address</label>
                         <input type="text" class="form-control" name="crypto_wallet" required>
                         <div class="valid-feedback">Looks good!</div>
-                    </div>
-                    <div class="col-md-12">
+                    </div> -->
+                    <!-- <div class="col-md-12">
                         <label class="form-label">Wallet Type (e.g., ethereum):</label>
                         <input type="text" class="form-control" name="wallet_type" required>
                         <div class="valid-feedback">Looks good!</div>
-                    </div>
+                    </div> -->
                     <div class="col-md-12">
                         <label class="form-label">Description</label>
                         <textarea name="description" rows="6" class="form-control" required></textarea>
@@ -122,7 +129,11 @@ if (isset($_GET['id'])) {
                     </div>
 
                     <div class="col-12">
-                        <button class="btn btn-primary" type="submit">Pay Now</button>
+                        <div class="btn-group">
+                            <button class="btn btn-primary me-2" type="submit">Pay Now</button>
+                            <a class="btn btn-outline-primary" href="home.php?id=<?= $id ?>">Cancel</a>
+                            <!-- <a class="btn btn-outline-primary" href="https://ddcheckout.com/">Cancel</a> -->
+                        </div>
                     </div>
                 </form>
             </div>

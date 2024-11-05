@@ -143,7 +143,7 @@ if (isset($_GET['id'])) {
 
             </div>
 
-            <a href="" class="mt-3">Not Now</a>
+            <a href="https://ddcheckout.com/" class="mt-3">Not Now</a>
 
         </div>
     </div>

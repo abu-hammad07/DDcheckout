@@ -2,7 +2,7 @@
 if (
     isset($_GET['price']) && $_GET['price'] != 895 && $_GET['price'] != 1395 && $_GET['price'] != '1895packagefbl' && $_GET['price'] != '1895packagedge'
     && $_GET['price'] != 1195 && $_GET['price'] != '1595packageom' && $_GET['price'] != '1595packagero'
-    && $_GET['price'] != 1995 && $_GET['price'] != 2395 && $_GET['price'] != 999
+    && $_GET['price'] != 1995 && $_GET['price'] != 2395 && $_GET['price'] != 999 && $_GET['price'] != 1
 ) {
     // redirect 404 page
     header("Location: 404.php");
@@ -53,6 +53,10 @@ if (
     $description = "Position your brand at the forefront with our market leadership services. We craft strategies that elevate your influence and establish you as an industry leader.";
 
 } elseif (isset($_GET['price']) && $_GET['price'] == 999) {
+    $price = intval($_GET['price']);
+    $title = "x1 Market Leadership";
+    $description = "Our comprehensive web development package delivers custom-coded, scalable websites built for performance and user engagement.";
+} elseif (isset($_GET['price']) && $_GET['price'] == 1) {
     $price = intval($_GET['price']);
     $title = "x1 Market Leadership";
     $description = "Our comprehensive web development package delivers custom-coded, scalable websites built for performance and user engagement.";

@@ -21,8 +21,8 @@ if (isset($_GET['page'])) {
 function index()
 {
     // Redirect to the home.php page
-    header("Location: dashboard.php?price={$_GET['price']}");
-    // header("Location: https://decensatdesign.com");
+    // header("Location: dashboard.php?price={$_GET['price']}");
+    header("Location: https://decensatdesign.com");
     exit;
 }
 
@@ -107,8 +107,8 @@ function checkout()
                 ],
             ],
             'mode' => 'payment',
-            'success_url' => 'http://localhost/stripe_finance_payments/index.php?page=success', // Success URL after payment
-            'cancel_url' => 'http://localhost/stripe_finance_payments/index.php', // Cancel URL if the payment fails
+            'success_url' => 'https://ddcheckout.com/index.php?page=success', // Success URL after payment
+            'cancel_url' => 'https://decensatdesign.com', // Cancel URL if the payment fails
         ]);
 
         // Redirect the user to the Stripe Checkout page
@@ -130,5 +130,5 @@ function success()
 {
     echo '<h1>Payment Successful!</h1>';
     echo '<p>Thank you for your payment.</p>';
-    echo '<a href="index.php">Back to Home</a>';
+    echo '<a href="https://decensatdesign.com">Back to Home</a>';
 }
