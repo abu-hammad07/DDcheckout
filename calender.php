@@ -22,8 +22,10 @@
 
     <script src="https://apis.google.com/js/api.js"></script>
     <script>
-        const CLIENT_ID = '73625581170-7tp76nsjshd01fj24a8mr3pqkd96c422.apps.googleusercontent.com';
-        const API_KEY = 'AIzaSyDFjgZ-IKf_wAISG7i2TIjNgX6bjsXVdzc';
+        // const CLIENT_ID = '73625581170-7tp76nsjshd01fj24a8mr3pqkd96c422.apps.googleusercontent.com';
+        // const API_KEY = 'AIzaSyDFjgZ-IKf_wAISG7i2TIjNgX6bjsXVdzc';
+        const CLIENT_ID = '223958138395-aque8pg3f1hsiea83sb5lbkgi7b8cbeg.apps.googleusercontent.com';
+        const API_KEY = 'AIzaSyCiLCSEqkcmRFWvjErNRmt1jql11-2iOYI';
         const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
         const SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
 
