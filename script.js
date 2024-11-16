@@ -2,6 +2,8 @@
 // const API_KEY = "AIzaSyDFjgZ-IKf_wAISG7i2TIjNgX6bjsXVdzc";
 const CLIENT_ID = "223958138395-uhgl6jdo4j9hfcillpp8fl3nnub2fmh4.apps.googleusercontent.com";
 const API_KEY = "AIzaSyCiLCSEqkcmRFWvjErNRmt1jql11-2iOYI";
+// const CLIENT_ID = "223958138395-aque8pg3f1hsiea83sb5lbkgi7b8cbeg.apps.googleusercontent.com";
+// const API_KEY = "AIzaSyCiLCSEqkcmRFWvjErNRmt1jql11-2iOYI"; // Use your correct API key
 const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
 const SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
 
@@ -85,4 +87,6 @@ function listUpcomingEvents() {
     });
 }
 
+// Load the client on page load
 document.addEventListener("DOMContentLoaded", handleClientLoad);
+
