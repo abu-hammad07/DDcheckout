@@ -35,6 +35,12 @@ session_start(); // Start the session
 
                         <!-- Form -->
                         <form method="post" action="">
+                            <!-- Authorization -->
+                            <div class="mb-3">
+                                <label for="authorization" class="form-label">Buyer Authorization</label>
+                                <input type="text" id="authorization" name="authorization" class="form-control" required>
+                            </div>
+
                             <!-- Buyer Info -->
                             <div class="mb-3">
                                 <label for="email" class="form-label">Buyer Email</label>
@@ -149,7 +155,8 @@ session_start(); // Start the session
         // Set up cURL
         $payload = json_encode($data);
         $headers = [
-            "Authorization: DAQA4BW-4WSM3DV-MRZ6W69-JVJS52Z",
+            // "Authorization: DAQA4BW-4WSM3DV-MRZ6W69-JVJS52Z",
+            "Authorization: " . $formData['authorization'], // Use the value from the form
             "Content-Type: application/json"
         ];
 
