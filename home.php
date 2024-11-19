@@ -137,7 +137,10 @@ if (isset($_GET['id'])) {
                     <button type="submit" class="btn btn-primary me-2">Stripe Payment</button>
                 </form>
 
-                <form action="index2.php?id=<?= $customer_id ?>" method="POST">
+                <!-- <form action="index2.php?id=<?= $customer_id ?>" method="POST">
+                    <button type="submit" class="btn btn-outline-primary">Finance Payment</button>
+                </form> -->
+                <form action="stripe-payment/index.php?id=<?= $customer_id ?>" method="POST">
                     <button type="submit" class="btn btn-outline-primary">Finance Payment</button>
                 </form>
 
