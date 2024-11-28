@@ -3,10 +3,17 @@
 class Database
 {
 
+    // local
+    // private $db_host = "localhost";
+    // private $db_username = "root";
+    // private $db_password = "";
+    // private $db_name = "dd_check_out";
+
+    // Domain
     private $db_host = "localhost";
-    private $db_username = "root";
-    private $db_password = "";
-    private $db_name = "dd_check_out";
+    private $db_username = "u930924801_checkout";
+    private $db_name = "u930924801_checkout";
+    private $db_password = "BQoP9>Kt";
 
 
     private $mysqli = null;
