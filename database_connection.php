@@ -8,8 +8,8 @@
 
 // ===== Live (Server)
 $hostname = "localhost";
-$username = "u930924801_checkout";
-$database = "u930924801_checkout";   
+$username = "u930924801_ddcheckout";
+$database = "u930924801_ddcheckout";   
 $password = "BQoP9>Kt";
 
 $con=mysqli_connect($hostname,$username,$password,$database);    
