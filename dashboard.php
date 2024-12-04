@@ -182,13 +182,83 @@ Total $1895packagedge -->
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- JS for jQuery -->
+
     <!-- Include intlTelInput for phone number input -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
     <script>
+        // Initialize intlTelInput for phone number formatting
+        const phoneInputField = document.querySelector("#phone");
+        const phoneInput = window.intlTelInput(phoneInputField, {
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        });
+
+        // Toggle visibility of Figma file input
+        function toggleFigmaInput(show) {
+            const figmaInput = document.getElementById('figma-file-input');
+            figmaInput.style.display = show ? 'block' : 'none';
+        }
+
+        // Form submission handler
+        function user_form() {
+            // Get form values
+            const name = $("#name").val().trim();
+            const email = $("#email").val().trim();
+            const phone = phoneInput.getNumber(); // Get formatted phone number
+            const figma = $("input[name='figma']:checked").val(); // Get selected radio value
+            const price = $("#price").val().trim();
+
+            // Validate required fields
+            if (!name || !email || !phone || !figma) {
+                alert("Please fill out all required fields.");
+                return false;
+            }
+
+            // Prepare FormData
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('email', email);
+            formData.append('phone', phone);
+            formData.append('figma', figma);
+            formData.append('price', price);
+
+            // Append Figma file if available
+            const figmaFile = $('#figma_file')[0]?.files[0];
+            if (figmaFile) {
+                formData.append('figma_file', figmaFile);
+            }
+
+            // AJAX request
+            $.ajax({
+                url: "save_customer_event.php",
+                type: "POST",
+                data: formData,
+                processData: false, // Don't process data automatically
+                contentType: false, // Set correct content type for FormData
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status === true) {
+                        alert(response.msg);
+                        window.location.href = 'calendar.php?id=' + response.id;
+                    } else {
+                        alert(response.msg || "Error: Unable to process your request.");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error Details:", xhr.responseText);
+                    alert("Something went wrong: " + (xhr.responseText || "Internal Server Error."));
+                }
+            });
+
+            return false; // Prevent default form submission
+        }
+    </script>
+
+
+
+    <!-- <script>
         const phoneInputField = document.querySelector("#phone");
         const phoneInput = window.intlTelInput(phoneInputField, {
             utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
@@ -250,7 +320,7 @@ Total $1895packagedge -->
             });
             return false;
         }
-    </script>
+    </script> -->
 </body>
 
 </html>
