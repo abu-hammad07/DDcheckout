@@ -6,52 +6,42 @@ if (
 ) {
     // redirect 404 page
     header("Location: 404.php");
-
 } elseif (isset($_GET['price']) && $_GET['price'] == 895) {
     $price = intval($_GET['price']);
     $title = "x1 Launch Essentials";
     $description = "Get your business started with a custom logo, brand identity, social media setup, and initial content to build your presence.";
-
 } elseif (isset($_GET['price']) && $_GET['price'] == 1395) {
     $price = intval($_GET['price']);
     $title = "x1 Build & scale";
     $description = "Take your brand to the next level with enhanced branding, a basic website, short videos, and business consultation to fuel growth.";
-
 } elseif (isset($_GET['price']) && $_GET['price'] == '1895packagefbl') {
     $price = 1895;
     $title = "x1 Full brand launch";
     $description = "Comprehensive brand development with an advanced website. social media management, and email marketing to scale quickly.";
-
 } elseif (isset($_GET['price']) && $_GET['price'] == '1895packagedge') {
     $price = 1895;
     $title = "x1 Digital Growth & Expansion";
     $description = "Accelerate your digital growth and expansion with data-driven strategies and innovative solutions. We help you scale your online presence and reach new audiences effectively.";
-
 } elseif (isset($_GET['price']) && $_GET['price'] == 1195) {
     $price = intval($_GET['price']);
     $title = "x1 Social Media & Content";
     $description = "Boost your online presence with tailored social media strategies and engaging content that connects with your audience. We help your brand shine across all platforms.";
-
 } elseif (isset($_GET['price']) && $_GET['price'] == '1595packageom') {
     $price = 1595;
     $title = "x1 Operations & Marketing";
     $description = "Streamline your business operations and amplify growth with effective marketing strategies. We align your processes and promotions to drive efficiency and success.";
-
 } elseif (isset($_GET['price']) && $_GET['price'] == '1595packagero') {
     $price = 1595;
     $title = "x1 Rebranding & Optimization";
     $description = "Revitalize your brand with our rebranding and optimization services. We refine your identity and strategies to enhance market impact and improve performance.";
-
 } elseif (isset($_GET['price']) && $_GET['price'] == 1995) {
     $price = intval($_GET['price']);
     $title = "x1 Market Growth & Development";
     $description = "Unlock new opportunities with our market growth and development solutions. We help expand your business into new territories and drive sustainable success.";
-
 } elseif (isset($_GET['price']) && $_GET['price'] == 2395) {
     $price = intval($_GET['price']);
     $title = "x1 Market Leadership";
     $description = "Position your brand at the forefront with our market leadership services. We craft strategies that elevate your influence and establish you as an industry leader.";
-
 } elseif (isset($_GET['price']) && $_GET['price'] == 999) {
     $price = intval($_GET['price']);
     $title = "x1 Market Leadership";
@@ -192,13 +182,16 @@ Total $1895packagedge -->
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- JS for jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Include intlTelInput for phone number input -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
     <script>
         const phoneInputField = document.querySelector("#phone");
         const phoneInput = window.intlTelInput(phoneInputField, {
-            utilsScript:
-                "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
         });
 
         function toggleFigmaInput(show) {
@@ -242,7 +235,7 @@ Total $1895packagedge -->
                 processData: false, // Important for file uploads
                 contentType: false, // Important for file uploads
                 dataType: 'json',
-                success: function (response) {
+                success: function(response) {
                     if (response.status == true) {
                         console.log(response.msg);
                         window.location.href = 'calendar.php?id=' + response.id;
@@ -250,15 +243,13 @@ Total $1895packagedge -->
                         alert(response.msg);
                     }
                 },
-                error: function (xhr, status) {
+                error: function(xhr, status) {
                     console.log('ajax error = ' + xhr.statusText);
                     alert('Something went wrong. Please try again.');
                 }
             });
             return false;
         }
-
-
     </script>
 </body>
 
