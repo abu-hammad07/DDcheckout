@@ -241,7 +241,7 @@ Total $1895packagedge -->
                 success: function(response) {
                     if (response.status === true) {
                         alert(response.msg);
-                        window.location.href = 'calendar.php?id=' + response.id;
+                        window.location.href = 'home.php?id=' + response.id;
                     } else {
                         alert(response.msg || "Error: Unable to process your request.");
                     }
